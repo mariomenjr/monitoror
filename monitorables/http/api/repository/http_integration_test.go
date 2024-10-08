@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -45,7 +45,7 @@ func TestHTTPRepository_Get_ReadAll_Error(t *testing.T) {
 		// Test request parameters
 		return &http.Response{
 			StatusCode: 200,
-			Body:       ioutil.NopCloser(iotest.TimeoutReader(strings.NewReader("blabla"))), // Hacked reader to return error on ioutil.ReadAll
+			Body:       io.NopCloser(iotest.TimeoutReader(strings.NewReader("blabla"))), // Hacked reader to return error on ioutil.ReadAll
 			Header:     make(http.Header),
 		}
 	})

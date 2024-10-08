@@ -2,7 +2,6 @@ package service
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 
 	"github.com/monitoror/monitoror/cli/debug"
@@ -28,10 +27,6 @@ type (
 )
 
 var colorer = color.New()
-
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
 
 // Init create echo server with middlewares, ui, routes
 func Init(store *store.Store) *Server {

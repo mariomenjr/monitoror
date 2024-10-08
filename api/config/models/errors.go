@@ -20,7 +20,6 @@ func (e *ConfigFileNotFoundError) Error() string {
 }
 func (e *ConfigFileNotFoundError) Unwrap() error { return e.Err }
 
-//ConfigUnmarshalError
 type ConfigUnmarshalError struct {
 	Err       error
 	RawConfig string

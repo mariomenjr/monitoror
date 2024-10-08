@@ -46,8 +46,6 @@ type (
 		// Note: it's the only way to load config file outside of monitoror directory
 		NamedConfigs map[ConfigName]string
 	}
-
-	//nolint:golint
 	ConfigName string
 )
 

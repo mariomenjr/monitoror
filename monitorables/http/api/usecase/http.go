@@ -1,4 +1,4 @@
-//+build !faker
+//go:build !faker
 
 package usecase
 
@@ -85,7 +85,7 @@ func (hu *httpUsecase) httpAll(tileType coreModels.TileType, params models.Gener
 			buffer, err := xml2json.Convert(bytes.NewReader(response.Body))
 			if err != nil || strings.TrimSuffix(buffer.String(), "\n") == `""` {
 				tile.Status = coreModels.FailedStatus
-				tile.Message = fmt.Sprintf("unable to convert xml to json")
+				tile.Message = "unable to convert xml to json"
 				return tile, nil
 			}
 			response.Body = buffer.Bytes()
@@ -104,7 +104,7 @@ func (hu *httpUsecase) httpAll(tileType coreModels.TileType, params models.Gener
 		err := unmarshaller(response.Body, &data)
 		if err != nil {
 			tile.Status = coreModels.FailedStatus
-			tile.Message = fmt.Sprintf("unable to unmarshal content")
+			tile.Message = "unable to unmarshal content"
 			return tile, nil
 		}
 

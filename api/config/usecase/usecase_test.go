@@ -3,7 +3,7 @@ package usecase
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"strings"
 	"testing"
 	"time"
@@ -52,7 +52,7 @@ func initConfigUsecase(repository config.Repository) *configUsecase {
 
 func readConfig(input string) (configBag *models.ConfigBag, err error) {
 	configBag = &models.ConfigBag{}
-	reader := ioutil.NopCloser(strings.NewReader(input))
+	reader := io.NopCloser(strings.NewReader(input))
 	configBag.Config, err = repository.ReadConfig(reader)
 	return
 }

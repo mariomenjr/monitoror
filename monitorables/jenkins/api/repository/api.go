@@ -82,7 +82,7 @@ func (r *jenkinsRepository) GetJob(jobName string, branch string) (job *models.J
 	return
 }
 
-//GetBuildStatus fetch build information from travis-ci
+// GetLastBuildStatus fetch build information from travis-ci
 func (r *jenkinsRepository) GetLastBuildStatus(job *models.Job) (*models.Build, error) {
 	jenkinsBuild, err := r.jenkinsAPI.GetLastBuildByJobId(job.ID)
 	if err != nil {

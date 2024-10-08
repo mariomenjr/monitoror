@@ -2,7 +2,6 @@ package init
 
 import (
 	"bytes"
-	"io/ioutil"
 	"os"
 	"testing"
 	"time"
@@ -37,12 +36,12 @@ func TestRunInit(t *testing.T) {
 	output := &bytes.Buffer{}
 	monitororCli := &cli.MonitororCli{Output: output}
 
-	tmpDir, err := ioutil.TempDir("", "initCommand")
+	tmpDir, err := os.MkdirTemp("", "initCommand")
 	if assert.NoError(t, err) {
 		defer os.RemoveAll(tmpDir)
 
 		assert.NoError(t, runInit(monitororCli, tmpDir))
-		files, err := ioutil.ReadDir(tmpDir)
+		files, err := os.ReadDir(tmpDir)
 		assert.NoError(t, err)
 		assert.Len(t, files, 2)
 		assert.Equal(t, ".env", files[0].Name())

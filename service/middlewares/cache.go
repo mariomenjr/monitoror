@@ -46,7 +46,7 @@ func NewCacheMiddleware(store cache.Store, downstreamDefaultExpiration, upstream
 // UPSTREAM MIDDLEWARE
 //==============================================================================
 
-//UpstreamCacheHandler return the cached response if he finds it in the store. (Decorator Handlers)
+// UpstreamCacheHandler return the cached response if he finds it in the store. (Decorator Handlers)
 func (cm *CacheMiddleware) UpstreamCacheHandler(handle echo.HandlerFunc) echo.HandlerFunc {
 	return cache.CacheHandlerWithConfig(cache.CacheMiddlewareConfig{
 		Store:     &upstreamStore{cm.store, cm.downstreamDefaultExpiration},
@@ -55,7 +55,7 @@ func (cm *CacheMiddleware) UpstreamCacheHandler(handle echo.HandlerFunc) echo.Ha
 	}, handle)
 }
 
-//UpstreamCacheHandlerWithExpiration return the cached response if he finds it in the store. (Decorator Handlers)
+// UpstreamCacheHandlerWithExpiration return the cached response if he finds it in the store. (Decorator Handlers)
 func (cm *CacheMiddleware) UpstreamCacheHandlerWithExpiration(expire time.Duration, handle echo.HandlerFunc) echo.HandlerFunc {
 	return cache.CacheHandlerWithConfig(cache.CacheMiddlewareConfig{
 		Store:     &upstreamStore{cm.store, cm.downstreamDefaultExpiration},
@@ -68,7 +68,7 @@ func (cm *CacheMiddleware) UpstreamCacheHandlerWithExpiration(expire time.Durati
 // DOWNSTREAM MIDDLEWARE
 //==============================================================================
 
-//DownstreamStoreMiddleware Provide Downstream Store to all route. Used when route return timeout error
+// DownstreamStoreMiddleware Provide Downstream Store to all route. Used when route return timeout error
 func (cm *CacheMiddleware) DownstreamStoreMiddleware() echo.MiddlewareFunc {
 	config := cache.StoreMiddlewareConfig{
 		Store:      cm.store,
@@ -77,9 +77,9 @@ func (cm *CacheMiddleware) DownstreamStoreMiddleware() echo.MiddlewareFunc {
 	return cache.StoreMiddlewareWithConfig(config)
 }
 
-//==============================================================================
+// ==============================================================================
 // ResponsesStore methods (implementation of cache.Store)
-//==============================================================================
+// ==============================================================================
 func (c *upstreamStore) Get(key string, value interface{}) error {
 	return c.store.Get(models.UpstreamStoreKeyPrefix+key[1:], value)
 }
