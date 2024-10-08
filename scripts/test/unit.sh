@@ -3,5 +3,5 @@
 
 set -e
 
-go clean testdata ./...
+go clean ./...
 gotestsum -- $(go list ./... | grep -v mocks)
