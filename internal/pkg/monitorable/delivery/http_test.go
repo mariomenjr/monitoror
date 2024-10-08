@@ -74,7 +74,7 @@ func TestBindAndValidateParams(t *testing.T) {
 	assert.Equal(t, `invalid configuration, unable to parse request parameters`, err.Error())
 
 	p5 := &Params5{}
-	assert.Panics(t, func() {
-		_ = BindAndValidateParams(ctx, p5)
-	})
+	err = BindAndValidateParams(ctx, p5)
+	assert.Error(t, err)
+	assert.Equal(t, `invalid configuration, unable to parse request parameters`, err.Error())
 }

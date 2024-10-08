@@ -1,6 +1,8 @@
 package delivery
 
 import (
+	"reflect"
+
 	"github.com/fatih/structs"
 	"github.com/labstack/echo/v4"
 
@@ -14,6 +16,10 @@ import (
 func BindAndValidateParams(ctx echo.Context, p params.Validator) error {
 	// Bind struct into query string using echo.Context.Bind
 	if err := ctx.Bind(p); err != nil {
+		return coreModels.ParamsError
+	}
+
+	if reflect.ValueOf(p).Elem().Kind() != reflect.Struct {
 		return coreModels.ParamsError
 	}
 
