@@ -2,7 +2,7 @@ package repository
 
 import (
 	"crypto/tls"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 
@@ -43,7 +43,7 @@ func (r *httpRepository) Get(url string) (response *models.Response, err error) 
 	}
 	defer resp.Body.Close()
 
-	bytes, err := ioutil.ReadAll(resp.Body)
+	bytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return
 	}

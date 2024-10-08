@@ -1,7 +1,7 @@
 package init
 
 import (
-	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/monitoror/monitoror/cli"
@@ -34,12 +34,12 @@ func runInit(_ *cli.MonitororCli, basedir string) error {
 	}
 
 	// Create defautl config.json
-	_ = ioutil.WriteFile(path.ToAbsolute(basedir, "config.json"), defaultFiles.MustBytes("config-example.json"), 0644)
+	_ = os.WriteFile(path.ToAbsolute(basedir, "config.json"), defaultFiles.MustBytes("config-example.json"), 0644)
 
 	// Create default .env
 	dotEnv := defaultFiles.MustString(".env.example")
 	dotEnv = strings.Replace(dotEnv, "config-example.json", "config.json", 1)
-	_ = ioutil.WriteFile(path.ToAbsolute(basedir, ".env"), []byte(dotEnv), 0644)
+	_ = os.WriteFile(path.ToAbsolute(basedir, ".env"), []byte(dotEnv), 0644)
 
 	return nil
 }

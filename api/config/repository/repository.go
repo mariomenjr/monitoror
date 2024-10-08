@@ -3,7 +3,6 @@ package repository
 import (
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net/http"
 
 	"github.com/monitoror/monitoror/api/config"
@@ -22,7 +21,7 @@ func NewConfigRepository() config.Repository {
 }
 
 func ReadConfig(reader io.Reader) (config *models.Config, err error) {
-	bytes, err := ioutil.ReadAll(reader)
+	bytes, err := io.ReadAll(reader)
 	if err != nil {
 		return
 	}

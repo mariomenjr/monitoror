@@ -7,7 +7,7 @@ import (
 	"github.com/dustin/go-humanize"
 )
 
-//Interface transform interface to string
+// Interface transform interface to string
 func Interface(value interface{}) string {
 	// TODO handle slice properly if needed
 	if reflect.TypeOf(value).Kind() == reflect.Ptr {

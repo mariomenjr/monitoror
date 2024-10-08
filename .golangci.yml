@@ -5,7 +5,7 @@ run:
   tests: true
 
 output:
-  format: colored-line-number
+  formats: colored-line-number
   print-issued-lines: true
   print-linter-name: true
 
@@ -14,17 +14,18 @@ issues:
     - path: service/rice-box.go
       linters:
         - misspell
-
+    - path-except: '(.+)_test\.go'
+      linters:
+        - misspell
 linters:
   enable:
-    - megacheck
+    - gosimple
+    - staticcheck
+    - unused
     - govet
-    - golint
-    - interfacer
     - unconvert
     - gocyclo
     - goimports
-    - maligned
     - misspell
     - unparam
     - nakedret

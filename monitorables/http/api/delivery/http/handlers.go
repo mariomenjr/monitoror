@@ -10,7 +10,6 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-//nolint:golint
 type HTTPDelivery struct {
 	httpUsecase api.Usecase
 }

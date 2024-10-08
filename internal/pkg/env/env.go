@@ -15,8 +15,11 @@ type (
 // InitEnvDefaultLabel extract Label of monitoror Env variable
 // and inject Default label if missing
 // Like:
-//	 MO_CONFIG=xxx => MO_CONFIG_DEFAULT
-//   MO_MONITORABLE_JENKINS_URL=xxx => MO_MONITORABLE_JENKINS_DEFAULT_URL=xxx =>
+//
+//		 MO_CONFIG=xxx => MO_CONFIG_DEFAULT
+//	  MO_MONITORABLE_JENKINS_URL=xxx => MO_MONITORABLE_JENKINS_DEFAULT_URL=xxx =>
+//
+//nolint:goimports
 func InitEnvDefaultLabel(envPrefix string, envSuffix string, defaultLabel string) Labels {
 	// We need to Identify every Variant
 	variantNames := make(Labels)

@@ -46,7 +46,7 @@ func (h *ConfigDelivery) GetConfig(c echo.Context) error {
 	// In Chromium on arm the UI code do not parse escaping character correctly
 	encoded, _ := JSONMarshal(configBag) // Ignoring error, assuming there is no function or channel inside this struct
 
-	return c.Blob(http.StatusOK, echo.MIMEApplicationJSONCharsetUTF8, encoded)
+	return c.Blob(http.StatusOK, echo.MIMEApplicationJSON, encoded)
 }
 
 // JSONMarshal same as JSON.Marshall but with SetEscapeHTML(false)

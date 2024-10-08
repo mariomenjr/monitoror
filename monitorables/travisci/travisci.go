@@ -1,4 +1,4 @@
-//+build !faker
+//go:build !faker
 
 package travisci
 

@@ -3,4 +3,4 @@
 
 set -e
 
-golangci-lint run --skip-files service/rice-box.go
+golangci-lint run

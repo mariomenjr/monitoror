@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 
@@ -15,7 +14,7 @@ import (
 
 // TestConfigRepository_GetConfigFromPath test if os.Open get works
 func TestConfigRepository_GetConfigFromPath(t *testing.T) {
-	tmpFile, err := ioutil.TempFile(os.TempDir(), "test-config-GetConfigFromPath-")
+	tmpFile, err := os.CreateTemp(os.TempDir(), "test-config-GetConfigFromPath-")
 	if assert.NoError(t, err) {
 		defer os.Remove(tmpFile.Name())
 		_, _ = tmpFile.WriteString("{}")
@@ -27,7 +26,7 @@ func TestConfigRepository_GetConfigFromPath(t *testing.T) {
 }
 
 func TestConfigRepository_UnableToParse(t *testing.T) {
-	tmpFile, err := ioutil.TempFile(os.TempDir(), "monitoror-wrong-file")
+	tmpFile, err := os.CreateTemp(os.TempDir(), "monitoror-wrong-file")
 	if assert.NoError(t, err) {
 		defer os.Remove(tmpFile.Name())
 		_, _ = tmpFile.WriteString("xxxxxx")

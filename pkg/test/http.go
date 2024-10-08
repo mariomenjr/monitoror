@@ -10,8 +10,7 @@ func (f RoundTripFunc) RoundTrip(req *http.Request) (*http.Response, error) {
 	return f(req), nil
 }
 
-//nolint:interfacer
-//NewTestClient returns *http.Client with Transport replaced to avoid making real calls
+// NewTestClient returns *http.Client with Transport replaced to avoid making real calls
 func NewTestClient(transport RoundTripFunc) *http.Client {
 	return &http.Client{
 		Transport: transport,
