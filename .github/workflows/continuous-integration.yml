@@ -32,7 +32,7 @@ jobs:
 
       - name: install
         run: |
-          go get gotest.tools/gotestsum
+          go install gotest.tools/gotestsum@v1.12.0
           make install
 
       - name: tests
@@ -113,7 +113,7 @@ jobs:
 
       - name: core / install
         run: |
-          go get github.com/GeertJohan/go.rice/rice
+          go install github.com/GeertJohan/go.rice/rice@v1.0.3
           make install
 
       - name: ui / build

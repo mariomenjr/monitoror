@@ -235,13 +235,13 @@ cat > ~/.config/autostart/chromium-browser.desktop &lt;&lt;END
 
       <pre class="language-bash"><code>
 # Generating mock for backend
-go get github.com/Willyham/mockery/.../
+go install github.com/vektra/mockery/v2@v2.46.2
 
 # Test utilities
-go get gotest.tools/gotestsum
+go install gotest.tools/gotestsum@v1.12.0
 
 # Embed UI dist into go binary
-go get github.com/GeertJohan/go.rice/rice
+go install github.com/GeertJohan/go.rice/rice@v1.0.3
       </code></pre>
 
       <p>
