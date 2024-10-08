@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/setup-go@v1
         with:
-          go-version: 1.16
+          go-version: 1.23
         id: go
 
       - uses: actions/checkout@v1
@@ -100,7 +100,7 @@ jobs:
 
       - uses: actions/setup-go@v1
         with:
-          go-version: 1.16
+          go-version: 1.23
         id: go
 
       - uses: actions/checkout@v1
@@ -128,7 +128,7 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]]; then export MB_ENVIRONMENT=production; fi
           make build-cross
 
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         with:
           name: binaries
           path: binaries
@@ -150,7 +150,7 @@ jobs:
           echo ::set-output name=VERSION::$VERSION
           echo ::set-output name=UPLOAD_URL::$(curl https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/$VERSION --silent | grep -Po '"upload_url"\s*:\s*"[^"]+' | cut -d'"' -f4)
 
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
           name: binaries
 
@@ -209,7 +209,7 @@ jobs:
           echo ::set-output name=MAJOR_VERSION::$(echo $VERSION | cut -d "." -f 1)
 
 
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
           name: binaries
 
