@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/AlekSi/pointer v1.1.0
-	github.com/GeertJohan/go.rice v1.0.0
+	github.com/GeertJohan/go.rice v1.0.3
 	github.com/basgys/goxml2json v1.1.0
 	github.com/dustin/go-humanize v1.0.0
 	github.com/fatih/structs v1.1.0
@@ -35,7 +35,7 @@ require (
 require (
 	github.com/bitly/go-simplejson v0.5.0 // indirect
 	github.com/bradfitz/gomemcache v0.0.0-20190329173943-551aad21a668 // indirect
-	github.com/daaku/go.zipexe v1.0.0 // indirect
+	github.com/daaku/go.zipexe v1.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect

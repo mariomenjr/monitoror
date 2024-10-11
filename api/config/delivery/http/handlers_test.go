@@ -17,7 +17,7 @@ import (
 
 func initEcho() (ctx echo.Context, res *httptest.ResponseRecorder) {
 	e := echo.New()
-	req := httptest.NewRequest(echo.GET, "/api/v1/config", nil)
+	req := httptest.NewRequest(echo.GET, "/api/v1/config/default", nil)
 	res = httptest.NewRecorder()
 	ctx = e.NewContext(req, res)
 
@@ -53,12 +53,14 @@ func TestConfigDelivery_GetConfigList(t *testing.T) {
 func TestDelivery_ConfigHandler_Success(t *testing.T) {
 	// Init
 	ctx, res := initEcho()
+	ctx.SetParamNames("config")
+	ctx.SetParamValues("default")
 	ctx.QueryParams().Set("url", "monitoror.example.com")
 
 	config := &models.ConfigBag{}
 
 	mockUsecase := new(mocks.Usecase)
-	mockUsecase.On("GetConfig", Anything).Return(config)
+	mockUsecase.On("GetConfig", &models.ConfigParams{Config: "default"}).Return(config)
 	mockUsecase.On("Verify", Anything)
 	mockUsecase.On("Hydrate", Anything, Anything)
 	handler := NewConfigDelivery(mockUsecase)
